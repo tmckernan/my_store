@@ -32,7 +32,7 @@ gem 'spree', '~> 4.1'
 gem 'spree_auth_devise', '~> 4.1'
 gem 'spree_gateway', '~> 3.7'
 
-gem 'spree_simple_sales', path: '../spree_simple_sales'
+#gem 'spree_simple_sales', path: '../spree_simple_sales'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
