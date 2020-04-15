@@ -1,12 +1,25 @@
 Rails.application.routes.draw do
-  # This line mounts Spree's routes at the root of your application.
-  # This means, any requests to URLs such as /products, will go to
-  # Spree::ProductsController.
-  # If you would like to change where this engine is mounted, simply change the
-  # :at option to something different.
-  #
-  # We ask that you don't use the :as option here, as Spree relies on it being
-  # the default of "spree".
+  # Spree routes
   mount Spree::Core::Engine, at: '/'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  Spree::Core::Engine.routes.draw do
+    get '/react_sample' => 'react_sample#index'
+  end
+
+  # sidekiq web UI
+  require 'sidekiq/web'
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    username == Rails.application.secrets.sidekiq_username &&
+      password == Rails.application.secrets.sidekiq_password
+  end
+  mount Sidekiq::Web, at: '/sidekiq'
+
+  # flipper web UI
+  flipper_app = Flipper::UI.app(Flipper.instance) do |builder|
+    builder.use Rack::Auth::Basic do |username, password|
+      username == Rails.application.secrets.flipper_username &&
+        password == Rails.application.secrets.flipper_password
+    end
+  end
+  mount flipper_app, at: '/flipper'
 end

@@ -13,18 +13,9 @@ Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
+  config.layout = 'spree/layouts/spree_application'
+  config.logo = 'logo/spree_50.png'
+  config.admin_interface_logo = 'admin/logo.png'
 end
 
-# Configure Spree Dependencies
-#
-# Note: If a dependency is set here it will NOT be stored within the cache & database upon initialization.
-#       Just removing an entry from this initializer will make the dependency value go away.
-#
-Spree.dependencies do |dependencies|
-  # Example:
-  # Uncomment to change the default Service handling adding Items to Cart
-  # dependencies.cart_add_item_service = 'MyNewAwesomeService'
-end
-
-
-Spree.user_class = "Spree::User"
+Spree.user_class = 'Spree::User'
