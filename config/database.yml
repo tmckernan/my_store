@@ -24,12 +24,13 @@ default: &default
 development:
   <<: *default
   database: spark-starter-kit_development
-  # host: <%= ENV.fetch('DB_HOST', 'localhost') %>
-  url: <%= ENV['DATABASE_URL'] %>
-  # username: postgres
-  # port: <%= ENV.fetch('DB_PORT', '5432') %>
+  host: rdsbroker-7d508d33-aa55-45ef-a396-956f68d89c8a.coowcrpgh5fz.eu-west-2.rds.amazonaws.com
+  #<%= ENV.fetch('DB_HOST', 'localhost') %>
+  username: uhnlhyo5x4duwaye
+  port: <%= ENV.fetch('DB_PORT', '5432') %>
+  password: pJVaLARkrUkuL9dVdUI1T4rvDjO4R12p
 
-   # The specified database role being used to connect to postgres.
+  # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
